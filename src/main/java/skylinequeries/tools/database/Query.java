@@ -42,7 +42,7 @@ public class Query {
      * @param tableName the table name
      * @return a list of points
      */
-    public synchronized List<Point> getAllRecords(final String tableName) {
+    public List<Point> getAllRecords(final String tableName) {
 
         PreparedStatement statement = null;
         List<Point> points = new ArrayList<>();
@@ -75,34 +75,5 @@ public class Query {
         }
 
         return points;
-    }
-
-    /**
-     * Counts the number of rows in a database table.
-     *
-     * @param tableName table name
-     * @return number of rows in this table
-     */
-    public synchronized int getNumberOfRecords(final String tableName) {
-
-        PreparedStatement statement = null;
-        String query = String.format("%s%s", "SELECT COUNT(id) AS size FROM ", ("`").concat(tableName).concat("`"));
-        int count = 0;
-
-        try {
-            statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) count = resultSet.getInt("size");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (statement != null) statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return count;
     }
 }

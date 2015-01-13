@@ -2,8 +2,7 @@ package skylinequeries.algs;
 
 import skylinequeries.algs.bbs.BBS;
 import skylinequeries.tools.Drawer;
-import skylinequeries.tools.PointUtils;
-import skylinequeries.tools.Utils;
+import skylinequeries.tools.Utilities;
 import skylinequeries.rtree.Entry;
 import skylinequeries.rtree.RTree;
 import skylinequeries.rtree.geometry.Point;
@@ -32,7 +31,7 @@ public class BBSTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Objec
 
     @Override
     protected List<Entry<Object, Point>> doInBackground() throws Exception {
-        rTree = PointUtils.getPointsFromDB(rTree, dataset);
+        rTree = Utilities.getPointsFromDB(rTree, dataset);
         final BBS bbs = new BBS(rTree);
 
         final long before = System.nanoTime();
@@ -40,8 +39,8 @@ public class BBSTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Objec
         final long after = System.nanoTime();
         cpuTime = (double) (after - before) / 1000000000.0;
 
-        points = PointUtils.getPointsFromDB(dataset);
-        sPoints = PointUtils.entriesToList(sEntries);
+        points = Utilities.getPointsFromDB(dataset);
+        sPoints = Utilities.entriesToList(sEntries);
 
         for (Entry<Object, Point> entry : sEntries)
             publish(entry);
@@ -60,9 +59,9 @@ public class BBSTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Objec
 
     @Override
     protected void done() {
-        Utils.console(sEntries, points.size(), cpuTime, BBS.NODE_ACCESSES);
+        Utilities.console(sEntries, points.size(), cpuTime, BBS.NODE_ACCESSES);
         ExecutorService executor = Executors.newFixedThreadPool(1);
-        executor.execute(new Drawer(points, sPoints, 0.0, 0.0, 10000.0, 10000.0));
+        executor.submit(new Drawer(points, sPoints, 0.0, 0.0, 10000.0, 10000.0));
         executor.shutdown();
         System.gc();
     }

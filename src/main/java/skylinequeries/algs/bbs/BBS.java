@@ -2,7 +2,6 @@ package skylinequeries.algs.bbs;
 
 import skylinequeries.rtree.*;
 import skylinequeries.rtree.geometry.Point;
-import skylinequeries.tools.logger.FileLogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +12,12 @@ import java.util.PriorityQueue;
  *
  * @author Kien Hoang + Vinh Nguyen
  */
-public class BBS extends FileLogger {
+public class BBS {
 
     /**
      * Keeps track of the number of accessed nodes.
      */
     public static long NODE_ACCESSES = 0;
-
-    /**
-     * Logger helpers for algorithm.
-     */
-    private static final String className = BBS.class.getName();
-    private static final String executionMethod = "BBS.execute()";
 
     /**
      * The Rtree constructed from input points.
@@ -78,8 +71,6 @@ public class BBS extends FileLogger {
      */
     public List<Entry<Object, Point>> execute() {
 
-        StringBuilder s = new StringBuilder();
-
         if (rTree.isEmpty()) {
             System.err.println("RTree has no nodes!\n");
             return null;
@@ -91,71 +82,33 @@ public class BBS extends FileLogger {
         priorityQueue.add(new BBSHeapElement(rTree.root().get(), true));
         NODE_ACCESSES++;
 
-        s.append("Added root to heap...\n");
-        s.append("\t└──>Root: ").append(rTree.root().get().geometry().toString()).append("\n\n");
-
         while (!priorityQueue.isEmpty()) {
 
             BBSHeapElement head = priorityQueue.poll();
 
             if (!isDominatedInSet(head, skylineEntries)) {
                 if (head.getNode() instanceof NonLeaf) {
-                    s.append("Head is a NonLeaf.\n");
-                    s.append("\t└──>Head: ").append(head.getNode().geometry().toString()).append("\n");
                     NonLeaf<Object, Point> intermediateNode = (NonLeaf<Object, Point>) head.getNode();
-                    s.append("\t└──>Looping through head children.\n");
                     for (Node<Object, Point> child : intermediateNode.children()) {
                         NODE_ACCESSES++;
-                        s.append("\t\t└──>Increment the accessed nodes.\n");
-                        s.append("\t\t└──>Current child: ").append(child.geometry().toString()).append("\n");
                         BBSHeapElement element = new BBSHeapElement(child, true);
-                        if (!isDominatedInSet(element, skylineEntries)) {
+                        if (!isDominatedInSet(element, skylineEntries))
                             priorityQueue.add(element);
-                            s.append("\t\t\t└──>Added to the heap.\n");
-                        }
-                        else s.append("\t\t\t└──>Not added to the heap.\n");
                     }
                 }
                 else if (head.getNode() instanceof Leaf) {
-                    s.append("Head element is a Leaf.\n");
-                    s.append("\t└──>Head: ").append(head.getNode().geometry().toString()).append("\n");
                     Leaf<Object, Point> intermediateNode = (Leaf<Object, Point>) head.getNode();
-                    s.append("\t└──>Looping through head entries.\n");
                     for (Entry<Object, Point> entry : intermediateNode.entries()) {
                         NODE_ACCESSES++;
-                        s.append("\t\t└──>Increment the accessed nodes.\n");
-                        s.append("\t\t└──>Current entry: ").append(entry.geometry().toString()).append("\n");
                         BBSHeapElement element = new BBSHeapElement(entry, false);
-                        if (!isDominatedInSet(element, skylineEntries)) {
+                        if (!isDominatedInSet(element, skylineEntries))
                             priorityQueue.add(element);
-                            s.append("\t\t\t└──>Added to the heap.\n");
-                        }
-                        else s.append("\t\t\t└──>Not added to the heap.\n");
                     }
                 }
-                else {
-                    skylineEntries.add(head.getEntry());
-                    s.append("└──>Added head's entry to the skyline list.\n");
-                    s.append("\t└──>SKYLINE ENTRY: ").append(head.getEntry().toString()).append("\n");
-                }
+                else skylineEntries.add(head.getEntry());
             }
-            else s.append("Head has been discarded.\n");
-
-            s.append("\n\n");
         }
 
-        s.append("\n\nAlgorithm terminated.\n");
-        bbsLog(s.toString());
-
         return skylineEntries;
-    }
-
-    /**
-     * Logging for BBS algorithm.
-     *
-     * @param message the log message
-     */
-    private void bbsLog(String message) {
-        super.log(message, className, executionMethod);
     }
 }

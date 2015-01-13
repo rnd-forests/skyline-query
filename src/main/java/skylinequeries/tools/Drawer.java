@@ -1,14 +1,14 @@
 package skylinequeries.tools;
 
 import skylinequeries.rtree.geometry.Point;
-import skylinequeries.tools.stdlib.StdDraw;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * @author Vinh Nguyen
  */
-public class Drawer implements Runnable {
+public class Drawer implements Callable {
 
     private List<Point> points;
     private List<Point> skylinePoints;
@@ -28,7 +28,7 @@ public class Drawer implements Runnable {
     }
 
     @Override
-    public void run() {
+    public Object call() throws Exception {
         StdDraw.setCanvasSize(600, 600);
         StdDraw.setXscale(xMin, xMax);
         StdDraw.setYscale(yMin, yMax);
@@ -45,5 +45,6 @@ public class Drawer implements Runnable {
                 StdDraw.point(currentPoint.x(), currentPoint.y());
             }
         }
+        return null;
     }
 }

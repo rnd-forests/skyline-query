@@ -1,7 +1,6 @@
 package skylinequeries.algs;
 
-import skylinequeries.tools.PointUtils;
-import skylinequeries.tools.Utils;
+import skylinequeries.tools.Utilities;
 import skylinequeries.tools.Drawer;
 import skylinequeries.algs.nn.NN;
 import skylinequeries.rtree.Entry;
@@ -32,7 +31,7 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
 
     @Override
     protected List<Entry<Object, Point>> doInBackground() throws Exception {
-        rTree = PointUtils.getPointsFromDB(rTree, dataset);
+        rTree = Utilities.getPointsFromDB(rTree, dataset);
         final NN nn = new NN(rTree);
 
         final long before = System.nanoTime();
@@ -40,8 +39,8 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
         final long after = System.nanoTime();
         cpuTime = (double) (after - before) / 1000000000.0;
 
-        points = PointUtils.getPointsFromDB(dataset);
-        sPoints = PointUtils.entriesToList(sEntries);
+        points = Utilities.getPointsFromDB(dataset);
+        sPoints = Utilities.entriesToList(sEntries);
 
         for (Entry<Object, Point> entry : sEntries)
             publish(entry);
@@ -60,9 +59,9 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
 
     @Override
     protected void done() {
-        Utils.console(sEntries, points.size(), cpuTime, NN.NODE_ACCESSES);
+        Utilities.console(sEntries, points.size(), cpuTime, 0);
         ExecutorService executor = Executors.newFixedThreadPool(1);
-        executor.execute(new Drawer(points, sPoints, 0.0, 0.0, 10000.0, 10000.0));
+        executor.submit(new Drawer(points, sPoints, 0.0, 0.0, 10000.0, 10000.0));
         executor.shutdown();
         System.gc();
     }

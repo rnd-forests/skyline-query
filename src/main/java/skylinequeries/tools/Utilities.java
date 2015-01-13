@@ -1,19 +1,62 @@
 package skylinequeries.tools;
 
+import skylinequeries.rtree.Entry;
+import skylinequeries.rtree.RTree;
+import skylinequeries.rtree.geometry.Geometries;
+import skylinequeries.rtree.geometry.Point;
 import skylinequeries.tools.database.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Vinh Nguyen
  */
-public class Utils {
+public class Utilities implements Immutable {
 
     /**
      * Prevents outsiders from instantiating the class.
      */
-    private Utils() {
+    private Utilities() {
 
+    }
+
+    /**
+     * Gets points for RTree from a database table.
+     *
+     * @param rTree     the Rtree to construct
+     * @param tableName the database table name
+     * @return the Rtree populated with points read from database table
+     */
+    public static RTree<Object, Point> getPointsFromDB(RTree<Object, Point> rTree, final String tableName) {
+        List<Point> points = DB_QUERY.getAllRecords(tableName);
+        for (Point point : points) rTree = rTree.add(new Object(), point);
+        return rTree;
+    }
+
+    /**
+     * Gets the list of points used to populate the Rtree form database table.
+     *
+     * @param tableName the database table name
+     * @return the list containing points read from database table
+     */
+    public static List<Point> getPointsFromDB(final String tableName) {
+        return Immutable.DB_QUERY.getAllRecords(tableName);
+    }
+
+    /**
+     * Converts a list of Rtree entries to a list of points.
+     *
+     * @param entries the list of entries to convert
+     * @return the corresponding list of points
+     */
+    public static List<Point> entriesToList(final List<Entry<Object, Point>> entries) {
+        List<Point> points = new ArrayList<>();
+        if (!entries.isEmpty())
+            for (Entry<Object, Point> entry : entries)
+                points.add(Geometries.point(entry.geometry().x(), entry.geometry().y()));
+
+        return points;
     }
 
     /**
@@ -45,7 +88,7 @@ public class Utils {
         System.out.println("\t└──>CPU execution time (s)         = " + executionTime);
         if (accessedNodes != 0)
             System.out.println("\t└──>Number of accessed nodes       = " + accessedNodes + " (" + (float) (accessedNodes * 100.0 / size) + "%)");
-        Utils.getMemoryInfo();
+        getMemoryInfo();
         System.out.println("--------------------------------\n\n");
     }
 }

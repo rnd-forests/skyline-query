@@ -1,4 +1,4 @@
-package skylinequeries.tools.stdlib;
+package skylinequeries.tools;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
