@@ -71,10 +71,4 @@ public class FileLogger extends Logger implements Immutable {
         append(DATE_FORMAT.format(new Date()) + " | " + currentClass + " | " + method + " | Line: " + lineNo
                 + lineFeed + message + lineFeed);
     }
-
-    @Override
-    public void log(String message, String currentClass, String method) {
-        append(DATE_FORMAT.format(new Date()) + " | " + currentClass + " | " + method
-                + lineFeed + message + lineFeed);
-    }
 }

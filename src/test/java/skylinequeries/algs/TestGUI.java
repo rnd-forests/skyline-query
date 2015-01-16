@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * A simple GUI application to test algorithms.
+ *
  * @author Vinh Nguyen
  */
 public class TestGUI extends JFrame {

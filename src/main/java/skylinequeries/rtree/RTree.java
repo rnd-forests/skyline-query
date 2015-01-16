@@ -500,9 +500,9 @@ public final class RTree<T, S extends Geometry> {
      * Returns a predicate function that indicates if {@link Geometry}
      * is inside a given rectangle.
      *
-     * @param r the rectangle to check
-     * @return whether the geometry and the rectangle intersect
-     * @author extended by Vinh Nguyen
+     * @param r     the rectangle to check
+     * @return      whether the geometry is inside the rectangle
+     * @author      extended by Vinh Nguyen
      */
     public static Func1<Geometry, Boolean> inside(final Rectangle r) {
         return new Func1<Geometry, Boolean>() {
@@ -538,12 +538,11 @@ public final class RTree<T, S extends Geometry> {
 
     /**
      * Returns an {@link Observable} sequence of all {@link Entry}s in the
-     * R-tree whose minimum bounding rectangle intersects with the given
-     * rectangle.
+     * R-tree which are contained in the given rectangle.
      *
-     * @param r rectangle to check
-     * @return entries that are contained in the rectangle r
-     * @author extended by Vinh Nguyen
+     * @param r     rectangle to check
+     * @return      entries that are contained in the rectangle r
+     * @author      extended by Vinh Nguyen
      */
     public Observable<Entry<T, S>> searchEntriesInRectangle(final Rectangle r) {
         return search(inside(r));
@@ -661,11 +660,11 @@ public final class RTree<T, S extends Geometry> {
      * Find nearest neighbors to a given point with constraint that these
      * nearest neighbors are inside a given region (a rectangle).
      *
-     * @param p        point
-     * @param r        search region
-     * @param maxCount number of nearest neighbors to find
-     * @return nearest entries to maxCount, inside the search region
-     * @author extended by Vinh Nguyen
+     * @param p         point
+     * @param r         search region
+     * @param maxCount  number of nearest neighbors to find
+     * @return          nearest entries to maxCount, inside the search region
+     * @author          extended by Vinh Nguyen
      */
     public Observable<Entry<T, S>> boundedNNSearch(final Point p, final Rectangle r, int maxCount) {
         return searchEntriesInRectangle(r).lift(new OperatorBoundedPriorityQueue<Entry<T, S>>(maxCount, Comparators

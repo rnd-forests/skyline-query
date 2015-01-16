@@ -36,20 +36,20 @@ public class Query {
 
     /**
      * Queries the database to get all rows from a table,
-     * construct points from these rows and add them to a list.
+     * construct points from these rows and add these points to a list.
      * We also measure the execution time of query.
      *
-     * @param tableName the table name
-     * @return a list of points
+     * @param   tableName the table name
+     * @return  a list of points
      */
     public List<Point> getAllRecords(final String tableName) {
 
         PreparedStatement statement = null;
         List<Point> points = new ArrayList<>();
 
-        String query0 = String.format("%s", "SET profiling = 1");
-        String query1 = String.format("%s%s", "SELECT * FROM ", ("`").concat(tableName).concat("`"));
-        String query2 = String.format("%s", "SHOW PROFILES");
+        String query0 = "SET profiling = 1";
+        String query1 = "SELECT * FROM " + String.format("%s", "`".concat(tableName).concat("`"));
+        String query2 = "SHOW PROFILES";
 
         try {
             statement = connection.prepareStatement(query0);

@@ -40,7 +40,7 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
         cpuTime = (double) (after - before) / 1000000000.0;
 
         points = Utilities.getPointsFromDB(dataset);
-        sPoints = Utilities.entriesToList(sEntries);
+        sPoints = Utilities.entriesToPoints(sEntries);
 
         for (Entry<Object, Point> entry : sEntries)
             publish(entry);

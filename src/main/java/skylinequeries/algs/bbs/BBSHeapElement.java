@@ -7,14 +7,14 @@ import skylinequeries.rtree.geometry.Point;
 public class BBSHeapElement implements Comparable<BBSHeapElement> {
 
     /**
-     * A node in Rtree. In case the currently accessing node is a NonLeaf,
+     * A node in Rtree. In case the current accessed node is a NonLeaf,
      * its children are still intermediate nodes or Leafs.
      */
     private Node<Object, Point> node;
 
     /**
      * And entry in Rtree. In case the current accessed node is a Leaf,
-     * it children are entries which point to the actual data points.
+     * its children are entries which point to the actual data points.
      */
     private Entry<Object, Point> entry;
 
@@ -47,7 +47,7 @@ public class BBSHeapElement implements Comparable<BBSHeapElement> {
     }
 
     /**
-     * Returns a boolean value indicating where heap element contains node or entry.
+     * Returns a boolean value indicating whether heap element contains node or entry.
      *
      * @return true if node, false if entry
      */
@@ -56,7 +56,7 @@ public class BBSHeapElement implements Comparable<BBSHeapElement> {
     }
 
     /**
-     * Constructs heap element with a node.
+     * Constructs heap element using a node.
      *
      * @param node   the given node
      * @param isNode the node checker
@@ -68,7 +68,7 @@ public class BBSHeapElement implements Comparable<BBSHeapElement> {
     }
 
     /**
-     * Constructs heap element with an entry.
+     * Constructs heap element using an entry.
      *
      * @param entry  the given entry
      * @param isNode the node checker

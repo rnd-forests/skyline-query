@@ -23,10 +23,4 @@ public class ConsoleLogger extends Logger implements Immutable {
         System.err.println(DATE_FORMAT.format(new Date()) + " | " + currentClass + " | " + method + " | Line: " + lineNo
                 + "\n" + message);
     }
-
-    @Override
-    public void log(String message, String currentClass, String method) {
-        System.err.println(DATE_FORMAT.format(new Date()) + " | " + currentClass + " | " + method
-                + "\n" + message);
-    }
 }

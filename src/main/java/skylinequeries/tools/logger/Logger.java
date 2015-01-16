@@ -48,13 +48,4 @@ public abstract class Logger {
      * @param lineNo       the line number originating the log event
      */
     public abstract void log(String message, String currentClass, String method, int lineNo);
-
-    /**
-     * Performs logging action.
-     *
-     * @param message      the message to log
-     * @param currentClass the classname originating the log event
-     * @param method       the method originating the log events
-     */
-    public abstract void log(String message, String currentClass, String method);
 }

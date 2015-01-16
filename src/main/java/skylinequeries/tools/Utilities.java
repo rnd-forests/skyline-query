@@ -26,7 +26,7 @@ public class Utilities implements Immutable {
      *
      * @param rTree     the Rtree to construct
      * @param tableName the database table name
-     * @return the Rtree populated with points read from database table
+     * @return          the Rtree populated with points read from database table
      */
     public static RTree<Object, Point> getPointsFromDB(RTree<Object, Point> rTree, final String tableName) {
         List<Point> points = DB_QUERY.getAllRecords(tableName);
@@ -38,7 +38,7 @@ public class Utilities implements Immutable {
      * Gets the list of points used to populate the Rtree form database table.
      *
      * @param tableName the database table name
-     * @return the list containing points read from database table
+     * @return          the list containing points read from database table
      */
     public static List<Point> getPointsFromDB(final String tableName) {
         return Immutable.DB_QUERY.getAllRecords(tableName);
@@ -47,10 +47,10 @@ public class Utilities implements Immutable {
     /**
      * Converts a list of Rtree entries to a list of points.
      *
-     * @param entries the list of entries to convert
-     * @return the corresponding list of points
+     * @param entries   the list of entries to convert
+     * @return          the corresponding list of points
      */
-    public static List<Point> entriesToList(final List<Entry<Object, Point>> entries) {
+    public static List<Point> entriesToPoints(final List<Entry<Object, Point>> entries) {
         List<Point> points = new ArrayList<>();
         if (!entries.isEmpty())
             for (Entry<Object, Point> entry : entries)
