@@ -15,6 +15,12 @@ Algorithms are built based on descriptions in the following research papers:
 * [RTree](https://github.com/davidmoten/rtree) by [Dave Moten](https://github.com/davidmoten)
 * [Java Standard Libraries - StdDraw](http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java.html) by [Robert Sedgewick](http://www.cs.princeton.edu/~rs/) and [Kevin Wayne](http://www.cs.princeton.edu/~wayne/contact/). 
 
+## Images
+##### Swing GUI application
+![GUI application](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-01-16_1757_zps4f7c13b7.png)
+
+##### Skyline Visualization
+![Skyline Visualization](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-01-16_1758_zpsea731047.png)
 
 ## License
 This application is released under **MIT** license, see [LICENSE](./LICENSE).
