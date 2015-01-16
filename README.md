@@ -13,7 +13,7 @@ Algorithms are built based on descriptions in the following research papers:
 
 ## Libraries
 * [RTree](https://github.com/davidmoten/rtree) by [Dave Moten](https://github.com/davidmoten)
-* [Java Standard Libraries](http://introcs.cs.princeton.edu/java/stdlib/) by [Robert Sedgewick](http://www.cs.princeton.edu/~rs/) and [Kevin Wayne](http://www.cs.princeton.edu/~wayne/contact/). 
+* [Java Standard Libraries - StdDraw](http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java.html) by [Robert Sedgewick](http://www.cs.princeton.edu/~rs/) and [Kevin Wayne](http://www.cs.princeton.edu/~wayne/contact/). 
 
 
 ## License
