@@ -83,6 +83,7 @@ public class BBSHeapElement implements Comparable<BBSHeapElement> {
      * Compares heap elements according to their mindist values.
      *
      * @param o the heap element to compare
+     *
      * @return the comparison indicator
      */
     @SuppressWarnings("NullableProblems")

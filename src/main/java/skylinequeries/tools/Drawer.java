@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
- * A utility class to draw the skyline.
- * Note that this class is not thread-safe.
+ * A utility class to draw the skyline. Note that this class is not thread-safe.
  *
  * @author Vinh Nguyen
  */
