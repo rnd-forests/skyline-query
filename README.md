@@ -29,5 +29,5 @@ All 3rd party open sourced libraries distributed with this application are still
 
 
 ## Authors
-* [Vinh Nguyen](https://github.com/vinhnguyenict)
+* [Vinh Nguyen](https://github.com/vinhnguyentb)
 * [Kien Hoang](https://github.com/goddesss)
