@@ -6,13 +6,11 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
- * A utility class to draw the skyline.
- * Note that this class is not thread-safe.
+ * A utility class to draw the skyline (not thread-safe).
  *
  * @author Vinh Nguyen
  */
 public class Drawer implements Callable {
-
     private List<Point> points;
     private List<Point> skylinePoints;
     private double xMin;
@@ -41,13 +39,13 @@ public class Drawer implements Callable {
                 StdDraw.setPenRadius(0.005);
                 StdDraw.setPenColor(StdDraw.RED);
                 StdDraw.point(currentPoint.x(), currentPoint.y());
-            }
-            else {
+            } else {
                 StdDraw.setPenRadius(0.001);
                 StdDraw.setPenColor(StdDraw.GRAY);
                 StdDraw.point(currentPoint.x(), currentPoint.y());
             }
         }
+
         return null;
     }
 }

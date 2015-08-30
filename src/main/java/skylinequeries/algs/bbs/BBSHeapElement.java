@@ -5,7 +5,6 @@ import skylinequeries.rtree.Node;
 import skylinequeries.rtree.geometry.Point;
 
 public class BBSHeapElement implements Comparable<BBSHeapElement> {
-
     /**
      * A node in Rtree. In case the current accessed node is a NonLeaf,
      * its children are still intermediate nodes or Leafs.
@@ -85,7 +84,6 @@ public class BBSHeapElement implements Comparable<BBSHeapElement> {
      * @param o the heap element to compare
      * @return the comparison indicator
      */
-    @SuppressWarnings("NullableProblems")
     @Override
     public int compareTo(BBSHeapElement o) {
         if (this.heapElementMinDist > o.heapElementMinDist) return 1;

@@ -82,17 +82,16 @@ public class TestGUI extends JFrame {
     }
 
     private class MyComboBoxModel extends AbstractListModel implements ComboBoxModel {
-
         private final String tables[] = {
-            "large-anti-correlated-2d-points-1000000",
-            "large-correlated-2d-points-1000000",
-            "large-uniformly-distributed-2d-points-1000000",
-            "medium-anti-correlated-2d-points-100000",
-            "medium-correlated-2d-points-100000",
-            "medium-uniformly-distributed-2d-points-100000",
-            "small-anti-correlated-2d-points-10000",
-            "small-correlated-2d-points-10000",
-            "small-uniformly-distributed-2d-points-10000"
+                "large-anti-correlated-2d-points-1000000",
+                "large-correlated-2d-points-1000000",
+                "large-uniformly-distributed-2d-points-1000000",
+                "medium-anti-correlated-2d-points-100000",
+                "medium-correlated-2d-points-100000",
+                "medium-uniformly-distributed-2d-points-100000",
+                "small-anti-correlated-2d-points-10000",
+                "small-correlated-2d-points-10000",
+                "small-uniformly-distributed-2d-points-10000"
         };
 
         String selection = null;
@@ -119,7 +118,6 @@ public class TestGUI extends JFrame {
     }
 
     private class ButtonClickListener implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             final String command = e.getActionCommand();
