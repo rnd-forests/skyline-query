@@ -26,10 +26,6 @@ public class BBS {
 
     /**
      * Checks if a heap element is dominated by an entry.
-     * Because the final skyline points are only contained in
-     * entries of the Rtree, we just need to check the domination
-     * condition between a heap element and an entry.
-     * Note that a heap element can contain either intermediate node or entry.
      *
      * @param a the heap element
      * @param b the entry

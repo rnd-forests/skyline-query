@@ -13,11 +13,10 @@ import java.awt.event.ActionListener;
  * @author Vinh Nguyen
  */
 public class TestGUI extends JFrame {
-
-    private final JTextArea message = new JTextArea();
-    private String selectedTable = "";
     private final JComboBox tables = new JComboBox(new MyComboBoxModel());
     private final JTextArea skylineViewer = new JTextArea();
+    private final JTextArea message = new JTextArea();
+    private String selectedTable = "";
 
     public TestGUI() {
         super("Algorithms Benchmark");
