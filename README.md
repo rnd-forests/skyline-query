@@ -17,10 +17,10 @@ Algorithms are built based on descriptions in the following research papers:
 
 ## Images
 ##### Swing GUI application
-![GUI application](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-01-16_1757_zps4f7c13b7.png)
+![GUI application](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-01_1424_zpskdzddbbu.png)
 
 ##### Skyline Visualization
-![Skyline Visualization](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-01-16_1758_zpsea731047.png)
+![Skyline Visualization](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-01_1425_zps5cv0zs9v.png)
 
 ## License
 This application is released under **MIT** license, see [LICENSE](./LICENSE).
