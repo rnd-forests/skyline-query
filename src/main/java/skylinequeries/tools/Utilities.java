@@ -65,22 +65,22 @@ public class Utilities implements Constants {
      * @param executionTime algorithm execution time
      * @param accessedNodes the number of accessed nodes in RTree
      */
-    public static void console(final List skyline, final long size,
-                               final long executionTime, final long accessedNodes) {
+    public static String console(final List skyline, final long size,
+                                 final long executionTime, final long accessedNodes) {
         StringBuilder console = new StringBuilder();
         Runtime runtime = Runtime.getRuntime();
 
-        console.append("Algorithm performance\n")
-                .append("\t-Dataset        = ").append(size).append(" points").append("\n")
-                .append("\t-Skyline        = ").append(skyline.size()).append(" points").append("\n")
-                .append("\t-Execution time = ").append(executionTime).append(" ms").append("\n")
-                .append("\t-Accessed nodes = ").append(accessedNodes != 0 ? accessedNodes + " nodes" : "No data available")
-                .append("\n\n").append("Memory information")
-                .append("\n").append("\t-Used Memory  = ")
+        console.append("\nAlgorithm performance\n")
+                .append("\t+ Dataset = ").append(size).append(" points").append("\n")
+                .append("\t+ Skyline = ").append(skyline.size()).append(" points").append("\n")
+                .append("\t+ Execution time = ").append(executionTime).append(" ms").append("\n")
+                .append("\t+ Accessed nodes = ").append(accessedNodes != 0 ? accessedNodes + " nodes" : "No data available")
+                .append("\n").append("Memory information")
+                .append("\n").append("\t+ Used Memory = ")
                 .append((runtime.totalMemory() - runtime.freeMemory()) / 1000000).append(" MB").append("\n")
-                .append("\t-Free memory  = ").append(runtime.freeMemory() / 1000000).append(" MB").append("\n")
-                .append("\t-Total memory = ").append(runtime.totalMemory() / 1000000).append(" MB").append("\n");
+                .append("\t+ Free memory = ").append(runtime.freeMemory() / 1000000).append(" MB").append("\n")
+                .append("\t+ Total memory = ").append(runtime.totalMemory() / 1000000).append(" MB").append("\n\n");
 
-        System.out.print(console.toString());
+        return console.toString();
     }
 }

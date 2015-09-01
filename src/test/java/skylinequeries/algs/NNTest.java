@@ -18,14 +18,14 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
     private RTree<Object, Point> rTree = RTree.star().create();
     private List<Entry<Object, Point>> skylineEntries;
     private final String dataset;
-    private final JTextArea skylineViewer;
-    private List<Point> points;
-    private List<Point> skylinePoints;
+    private final JTextArea viewer, logger;
+    private List<Point> points, skylinePoints;
     private long executionTime;
 
-    public NNTest(String dataset, JTextArea skylineViewer) {
+    public NNTest(String dataset, JTextArea viewer, JTextArea logger) {
         this.dataset = dataset;
-        this.skylineViewer = skylineViewer;
+        this.viewer = viewer;
+        this.logger = logger;
     }
 
     @Override
@@ -41,8 +41,9 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
         points = Utilities.constructRTree(dataset);
         skylinePoints = Utilities.entriesToPoints(skylineEntries);
 
-        for (Entry<Object, Point> entry : skylineEntries)
+        for (Entry<Object, Point> entry : skylineEntries) {
             publish(entry);
+        }
 
         return skylineEntries;
     }
@@ -51,14 +52,14 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
     protected void process(List<Entry<Object, Point>> foundEntries) {
         int count = 1;
         for (Entry<Object, Point> entry : foundEntries) {
-            skylineViewer.append(String.format("%3d> -- %s", count, entry.geometry().toString()) + "\n\n");
+            viewer.append(String.format("%3d> %s", count, entry.geometry().toString()) + "\n\n");
             count++;
         }
     }
 
     @Override
     protected void done() {
-        Utilities.console(skylineEntries, points.size(), executionTime, 0);
+        logger.append(Utilities.console(skylineEntries, points.size(), executionTime, 0));
         ExecutorService executor = Executors.newFixedThreadPool(1);
         executor.submit(new Drawer(points, skylinePoints, 0.0, 0.0, 10000.0, 10000.0));
         executor.shutdown();
