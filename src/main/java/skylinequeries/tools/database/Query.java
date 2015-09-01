@@ -14,7 +14,6 @@ import java.util.List;
  * @author Vinh Nguyen
  */
 public class Query {
-    public static double QUERY_PROCESSING_TIME = 0.0;
     private Connection connection;
 
     public Query(Connection connection) {
@@ -36,25 +35,14 @@ public class Query {
     public List<Point> getAllRecords(final String tableName) {
         PreparedStatement statement = null;
         List<Point> points = new ArrayList<>();
-
-        String query0 = "SET profiling = 1";
-        String query1 = "SELECT * FROM " + String.format("%s", "`".concat(tableName).concat("`"));
-        String query2 = "SHOW PROFILES";
+        String query = "SELECT * FROM " + String.format("%s", "`".concat(tableName).concat("`"));
 
         try {
-            statement = getConnection().prepareStatement(query0);
-            statement.executeQuery();
-
-            statement = getConnection().prepareStatement(query1);
-            ResultSet resultSet1 = statement.executeQuery();
-            while (resultSet1.next()) {
-                points.add(Geometries.point(resultSet1.getDouble("x"), resultSet1.getDouble("y")));
+            statement = getConnection().prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                points.add(Geometries.point(resultSet.getDouble("x"), resultSet.getDouble("y")));
             }
-
-            statement = getConnection().prepareStatement(query2);
-            ResultSet resultSet2 = statement.executeQuery();
-            resultSet2.last();
-            QUERY_PROCESSING_TIME = resultSet2.getDouble("Duration");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

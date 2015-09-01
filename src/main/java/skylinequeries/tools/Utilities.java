@@ -4,7 +4,6 @@ import skylinequeries.rtree.Entry;
 import skylinequeries.rtree.RTree;
 import skylinequeries.rtree.geometry.Geometries;
 import skylinequeries.rtree.geometry.Point;
-import skylinequeries.tools.database.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,9 @@ public class Utilities implements Constants {
      */
     public static RTree<Object, Point> constructRTree(RTree<Object, Point> rTree, final String tableName) {
         List<Point> points = DB_QUERY.getAllRecords(tableName);
-        for (Point point : points) rTree = rTree.add(new Object(), point);
+        for (Point point : points) {
+            rTree = rTree.add(new Object(), point);
+        }
         return rTree;
     }
 
@@ -47,24 +48,13 @@ public class Utilities implements Constants {
      */
     public static List<Point> entriesToPoints(final List<Entry<Object, Point>> entries) {
         List<Point> points = new ArrayList<>();
-        if (!entries.isEmpty())
-            for (Entry<Object, Point> entry : entries)
+        if (!entries.isEmpty()) {
+            for (Entry<Object, Point> entry : entries) {
                 points.add(Geometries.point(entry.geometry().x(), entry.geometry().y()));
+            }
+        }
 
         return points;
-    }
-
-    /**
-     * Gets the application memory information in runtime from JVM.
-     */
-    public static void getMemoryInfo() {
-        Runtime runtime = Runtime.getRuntime();
-        System.out.println();
-        System.out.println("Java virtual machine memory information");
-        System.out.println("\t└──>Used Memory  = " + (runtime.totalMemory() - runtime.freeMemory()) / 1000000 + " MB");
-        System.out.println("\t└──>Free Memory  = " + runtime.freeMemory() / 1000000 + " MB");
-        System.out.println("\t└──>Total Memory = " + runtime.totalMemory() / 1000000 + " MB");
-        System.out.println("\t└──>Max Memory   = " + runtime.maxMemory() / 1000000 + " MB");
     }
 
     /**
@@ -73,17 +63,24 @@ public class Utilities implements Constants {
      * @param skyline       list of skyline points
      * @param size          the size of the input data
      * @param executionTime algorithm execution time
+     * @param accessedNodes the number of accessed nodes in RTree
      */
     public static void console(final List skyline, final long size,
-                               final double executionTime, final long accessedNodes) {
-        System.out.println("Algorithm performance");
-        System.out.println("\t└──>Total points in dataset        = " + size);
-        System.out.println("\t└──>Number of skyline points       = " + skyline.size());
-        System.out.println("\t└──>Total time to query the DB (s) = " + Query.QUERY_PROCESSING_TIME);
-        System.out.println("\t└──>CPU execution time (s)         = " + executionTime);
-        if (accessedNodes != 0)
-            System.out.println("\t└──>Number of accessed nodes       = " + accessedNodes + " (" + (float) (accessedNodes * 100.0 / size) + "%)");
-        getMemoryInfo();
-        System.out.println("--------------------------------\n\n");
+                               final long executionTime, final long accessedNodes) {
+        StringBuilder console = new StringBuilder();
+        Runtime runtime = Runtime.getRuntime();
+
+        console.append("Algorithm performance\n")
+                .append("\t-Dataset        = ").append(size).append(" points").append("\n")
+                .append("\t-Skyline        = ").append(skyline.size()).append(" points").append("\n")
+                .append("\t-Execution time = ").append(executionTime).append(" ms").append("\n")
+                .append("\t-Accessed nodes = ").append(accessedNodes != 0 ? accessedNodes + " nodes" : "No data available")
+                .append("\n\n").append("Memory information")
+                .append("\n").append("\t-Used Memory  = ")
+                .append((runtime.totalMemory() - runtime.freeMemory()) / 1000000).append(" MB").append("\n")
+                .append("\t-Free memory  = ").append(runtime.freeMemory() / 1000000).append(" MB").append("\n")
+                .append("\t-Total memory = ").append(runtime.totalMemory() / 1000000).append(" MB").append("\n");
+
+        System.out.print(console.toString());
     }
 }

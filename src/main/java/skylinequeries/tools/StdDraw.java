@@ -681,7 +681,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         // to read from file
         ImageIcon icon = new ImageIcon(filename);
 
-        // try to read from URL
+        // try to read from DB_URL
         if ((icon == null) || (icon.getImageLoadStatus() != MediaTracker.COMPLETE)) {
             try {
                 URL url = new URL(filename);

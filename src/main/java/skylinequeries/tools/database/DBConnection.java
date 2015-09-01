@@ -13,18 +13,19 @@ public class DBConnection implements Constants {
     private DBConnection() {
     }
 
-    public static Connection open() {
+    public static Connection initialize() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(Constants.URL,
-                    Constants.USERNAME, Constants.PASSWORD);
+            connection = DriverManager.getConnection(Constants.DB_URL,
+                    Constants.DB_USERNAME, Constants.DB_PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return connection;
     }
 
-    public static void close(Connection connection) {
+    public static void terminate(Connection connection) {
         try {
             if (connection != null) {
                 connection.close();

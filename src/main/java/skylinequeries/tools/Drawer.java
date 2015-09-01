@@ -13,10 +13,7 @@ import java.util.concurrent.Callable;
 public class Drawer implements Callable {
     private List<Point> points;
     private List<Point> skylinePoints;
-    private double xMin;
-    private double yMin;
-    private double xMax;
-    private double yMax;
+    private double xMin, yMin, xMax, yMax;
 
     public Drawer(List<Point> points, List<Point> skylinePoints,
                   double xMin, double yMin, double xMax, double yMax) {
