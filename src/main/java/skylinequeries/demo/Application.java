@@ -1,4 +1,4 @@
-package skylinequeries.algs;
+package skylinequeries.demo;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

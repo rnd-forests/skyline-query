@@ -1,4 +1,4 @@
-package skylinequeries.algs;
+package skylinequeries.demo;
 
 import skylinequeries.algs.bbs.BBS;
 import skylinequeries.tools.Drawer;
