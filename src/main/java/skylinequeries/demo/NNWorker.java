@@ -14,7 +14,10 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object, Point>> {
+/**
+ * @author Vinh Nguyen
+ */
+public class NNWorker extends SwingWorker<List<Entry<Object, Point>>, Entry<Object, Point>> {
     private RTree<Object, Point> rTree = RTree.star().create();
     private List<Entry<Object, Point>> skylineEntries;
     private final String dataset;
@@ -22,7 +25,7 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
     private List<Point> points, skylinePoints;
     private long executionTime;
 
-    public NNTest(String dataset, JTextArea viewer, JTextArea logger) {
+    public NNWorker(String dataset, JTextArea viewer, JTextArea logger) {
         this.dataset = dataset;
         this.viewer = viewer;
         this.logger = logger;
@@ -52,7 +55,7 @@ public class NNTest extends SwingWorker<List<Entry<Object, Point>>, Entry<Object
     protected void process(List<Entry<Object, Point>> foundEntries) {
         int count = 1;
         for (Entry<Object, Point> entry : foundEntries) {
-            viewer.append(String.format("%3d> %s", count, entry.geometry().toString()) + "\n\n");
+            viewer.append(String.format("%3d - %s", count, entry.geometry().toString()) + "\n\n");
             count++;
         }
     }

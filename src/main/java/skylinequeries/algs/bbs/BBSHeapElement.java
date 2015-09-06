@@ -4,6 +4,9 @@ import skylinequeries.rtree.Entry;
 import skylinequeries.rtree.Node;
 import skylinequeries.rtree.geometry.Point;
 
+/**
+ * @author Vinh Nguyen
+ */
 public class BBSHeapElement implements Comparable<BBSHeapElement> {
     /**
      * A node in Rtree. In case the current accessed node is a NonLeaf,

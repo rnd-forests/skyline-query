@@ -72,16 +72,18 @@ public class BBS {
                     for (Node<Object, Point> child : intermediateNode.children()) {
                         NODE_ACCESSES++;
                         BBSHeapElement element = new BBSHeapElement(child, true);
-                        if (!isDominatedInSet(element, skylineEntries))
+                        if (!isDominatedInSet(element, skylineEntries)) {
                             priorityQueue.add(element);
+                        }
                     }
                 } else if (head.getNode() instanceof Leaf) {
                     Leaf<Object, Point> intermediateNode = (Leaf<Object, Point>) head.getNode();
                     for (Entry<Object, Point> entry : intermediateNode.entries()) {
                         NODE_ACCESSES++;
                         BBSHeapElement element = new BBSHeapElement(entry, false);
-                        if (!isDominatedInSet(element, skylineEntries))
+                        if (!isDominatedInSet(element, skylineEntries)) {
                             priorityQueue.add(element);
+                        }
                     }
                 } else {
                     skylineEntries.add(head.getEntry());

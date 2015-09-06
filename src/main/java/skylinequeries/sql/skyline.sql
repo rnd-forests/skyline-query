@@ -20,39 +20,6 @@ Date: 2015-01-05 22:36:23
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for large-anti-correlated-2d-points-1000000
--- ----------------------------
-DROP TABLE IF EXISTS `large-anti-correlated-2d-points-1000000`;
-CREATE TABLE `large-anti-correlated-2d-points-1000000` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `x` double(255,15) NOT NULL,
-  `y` double(255,15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000000 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for large-correlated-2d-points-1000000
--- ----------------------------
-DROP TABLE IF EXISTS `large-correlated-2d-points-1000000`;
-CREATE TABLE `large-correlated-2d-points-1000000` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `x` double(255,20) NOT NULL,
-  `y` double(255,20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000000 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for large-uniformly-distributed-2d-points-1000000
--- ----------------------------
-DROP TABLE IF EXISTS `large-uniformly-distributed-2d-points-1000000`;
-CREATE TABLE `large-uniformly-distributed-2d-points-1000000` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `x` double(255,20) NOT NULL,
-  `y` double(255,20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000000 DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Table structure for medium-anti-correlated-2d-points-100000
 -- ----------------------------
 DROP TABLE IF EXISTS `medium-anti-correlated-2d-points-100000`;

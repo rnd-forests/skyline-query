@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
  *
  * @author Vinh Nguyen
  */
-public class Application extends JFrame {
+public class TestRunner extends JFrame {
     private final JComboBox tables = new JComboBox(new ComboBox());
     private final JTextArea viewer = new JTextArea();
     private final JTextArea logger = new JTextArea();
     private String selected, selection;
 
-    public Application() {
+    public TestRunner() {
         super("Skyline Query Algorithms");
         setLayout(new FlowLayout());
 
@@ -76,7 +76,7 @@ public class Application extends JFrame {
     }
 
     public static void main(String[] args) {
-        final Application testSuite = new Application();
+        final TestRunner testSuite = new TestRunner();
         testSuite.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -93,14 +93,14 @@ public class Application extends JFrame {
                     logger.append("... Executing Branch and Bound Skyline (BBS) algorithm\n");
                     logger.append("... Dataset: " + selected + "\n");
                     viewer.setText("");
-                    final BBSTest bbs = new BBSTest(selected, viewer, logger);
+                    final BBSWorker bbs = new BBSWorker(selected, viewer, logger);
                     bbs.execute();
                     break;
                 case "NN":
                     logger.append("... Executing Nearest Neighbor (NN) algorithm\n");
                     logger.append("... Dataset: " + selected + "\n");
                     viewer.setText("");
-                    final NNTest nn = new NNTest(selected, viewer, logger);
+                    final NNWorker nn = new NNWorker(selected, viewer, logger);
                     nn.execute();
                     break;
             }
@@ -138,5 +138,3 @@ public class Application extends JFrame {
         }
     }
 }
-
-
