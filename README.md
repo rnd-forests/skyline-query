@@ -24,7 +24,14 @@ Algorithms are built based on descriptions in the following research papers:
 ![GUI application](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-01_1424_zpskdzddbbu.png)
 
 ##### Skyline Visualization
-![Skyline Visualization](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-01_1425_zps5cv0zs9v.png)
+###### Anti-correlated 2D points dataset
+![Anti-correlated](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-13_1730_zpspo9lk2wn.png)
+
+###### Correlated 2D points dataset
+![Correlated](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-13_1733_zpsavcc0d2v.png)
+
+###### Uniformly Distributed 2D points dataset
+![Uniform](http://i1368.photobucket.com/albums/ag182/vinhnguyenict/2015-09-13_1734_zpsbpdfkaep.png)
 
 ## License
 This application is released under **MIT** license.
