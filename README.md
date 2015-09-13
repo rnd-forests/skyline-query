@@ -12,8 +12,12 @@ Algorithms are built based on descriptions in the following research papers:
 * Nearest Neighbor (NN)
 
 ## Libraries
-* [RTree](https://github.com/davidmoten/rtree) by [Dave Moten](https://github.com/davidmoten)
-* [Java Standard Libraries - StdDraw](http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java.html) by [Robert Sedgewick](http://www.cs.princeton.edu/~rs/) and [Kevin Wayne](http://www.cs.princeton.edu/~wayne/contact/). 
+* [RTree](https://github.com/davidmoten/rtree) by [Dave Moten](https://github.com/davidmoten).
+* [Java Standard Libraries - StdDraw](http://introcs.cs.princeton.edu/java/stdlib/StdDraw.java.html) by [Robert Sedgewick](http://www.cs.princeton.edu/~rs/) and [Kevin Wayne](http://www.cs.princeton.edu/~wayne/contact/).
+
+## Sample Data
+* [Data files](https://github.com/dkanellis/SkySpark/tree/master/data/datasets) are taken from the [SkySpark](https://github.com/dkanellis/SkySpark) repository of [Dimitris Kanellis](https://github.com/dkanellis).
+* [Data files](https://github.com/dkanellis/SkySpark/tree/master/data/datasets) are imported into MySQL database, and queried later for testing algorithms.
 
 ## Demonstration
 ##### GUI application
